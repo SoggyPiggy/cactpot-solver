@@ -1,8 +1,11 @@
 {
   "name": "cactpot-solver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A FFXIV Mini cactpot solver",
-  "keywords": ["ffxiv", "cactpot"],
+  "keywords": [
+    "ffxiv",
+    "cactpot"
+  ],
   "main": "index.js",
   "repository": "https://github.com/SoggyPiggy/cactpot-solver.git",
   "author": "SoggyPiggy <soggypiggy@gmail.com>",
