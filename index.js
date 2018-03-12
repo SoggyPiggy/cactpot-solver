@@ -100,7 +100,7 @@ class CactpotSolver
 		this.rows.set('345', new Row(3, 4, 5));
 		this.rows.set('678', new Row(6, 7, 8));
 		this.rows.set('036', new Row(0, 3, 6));
-		this.rows.set('146', new Row(1, 4, 6));
+		this.rows.set('147', new Row(1, 4, 7));
 		this.rows.set('258', new Row(2, 5, 8));
 		this.rows.set('048', new Row(0, 4, 8));
 		this.rows.set('246', new Row(2, 4, 6));
@@ -265,7 +265,8 @@ class CactpotSolver
 	}
 
 	findOptimal()
-	{}
+	{
+	}
 
 	findBest()
 	{
