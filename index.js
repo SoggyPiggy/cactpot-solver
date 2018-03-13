@@ -115,21 +115,21 @@ class CactpotSolver
 
 	resetScratches()
 	{
-		for (let v of this.scratches.values())
+		for (let [key, scratch] of this.scratches)
 		{
-			v.reset();
+			scratch.reset();
 		}
 	}
 
 	resetStates()
 	{
-		for (let v of this.scratches.values())
+		for (let [key, scratch] of this.scratches)
 		{
-			v.resetStates();
+			scratch.resetStates();
 		}
-		for (let v of this.rows.values())
+		for (let [key, row] of this.rows)
 		{
-			v.resetStates();
+			row.resetStates();
 		}
 	}
 
@@ -158,18 +158,18 @@ class CactpotSolver
 
 	resetRows()
 	{
-		for (let v of this.rows.values())
+		for (let [key, row] of this.rows)
 		{
-			v.reset();
+			row.reset();
 		}
 	}
 
 	getKnownScratchIDs()
 	{
 		let known = [];
-		for (let [key, item] of this.scratches)
+		for (let [key, scratch] of this.scratches)
 		{
-			if (item.value != 0)
+			if (scratch.value != 0)
 			{
 				known.push(key);
 			}
@@ -180,12 +180,9 @@ class CactpotSolver
 	getUsed()
 	{
 		let used = [];
-		for (let v of this.scratches)
+		for (let [key, scratch] of this.scratches)
 		{
-			if (v[1].value != 0)
-			{
-				used.push(v[1].value);
-			}
+			if (scratch.value != 0) used.push(scratch.value);
 		}
 		return used;
 	}
@@ -331,15 +328,15 @@ class CactpotSolver
 	{
 		let rowIDs = [];
 		let best = -Infinity;
-		for (let v of this.rows)
+		for (let [key, row] of this.rows)
 		{
-			if (v[1].mean > best)
+			if (row.mean > best)
 			{
 				rowIDs = [];
 				rowIDs.push(v[0]);
-				best = v[1].mean;
+				best = row.mean;
 			}
-			else if (v[1].mean == best) rowIDs.push(v[0]);
+			else if (row.mean == best) rowIDs.push(key);
 		}
 		for (let v of rowIDs)
 		{
@@ -353,10 +350,10 @@ class CactpotSolver
 
 	updateRows()
 	{
-		for (let v of this.rows)
+		for (let [key, row] of this.rows)
 		{
-			let stats = this.processRow(v[1].x, v[1].y, v[1].z);
-			v[1].updateStats(stats);
+			let stats = this.processRow(row.x, row.y, row.z);
+			row.updateStats(stats);
 		}
 	}
 
