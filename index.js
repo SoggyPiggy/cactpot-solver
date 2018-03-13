@@ -269,21 +269,26 @@ class CactpotSolver
 
 	findBest()
 	{
-		let rowid;
+		let rowIDs = [];
 		let best = -Infinity;
 		for (let v of this.rows)
 		{
 			if (v[1].mean > best)
 			{
-				rowid = v[0];
+				rowIDs = [];
+				rowIDs.push(v[0]);
 				best = v[1].mean;
 			}
+			else if (v[1].mean == best) rowIDs.push(v[0]);
 		}
-		let row = this.rows.get(rowid);
+		for (let v of rowIDs)
+		{
+			let row = this.rows.get(v);
 		row.best = true;
 		this.scratches.get(row.x).best = true;
 		this.scratches.get(row.y).best = true;
 		this.scratches.get(row.z).best = true;
+	}
 	}
 
 	updateRows()
