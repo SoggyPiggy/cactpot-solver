@@ -245,20 +245,22 @@ class CactpotSolver
 		let scratches = this.scratches.values();
 		for (let x = 0; x < scratches.length; x++)
 		{
+			let scratchX = this.scratches.get(x);
 			for (let y = 0; y < scratches.length; y++)
 			{
 				if (x == y) continue;
-				if (scratches[x].value == 0 || scratches[y].value == 0) continue;
-				if (scratches[x].value == scratches[y].value)
+				let scratchY = this.scratches.get(y);
+				if (scratchX.value == 0 || scratchY.value == 0) continue;
+				if (scratchX.value == scratchY.value)
 				{
-					scratches[x].problem = true;
-					scratches[y].problem = true;
+					scratchX.problem = true;
+					scratchY.problem = true;
 					passed = false;
 				}
 			}
-			if (scratches[x].value != 0 && toomuch)
+			if (scratchX.value != 0 && toomuch)
 			{
-				scratches[x].problem = true;
+				scratchX.problem = true;
 			}
 		}
 		return passed
