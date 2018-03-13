@@ -278,6 +278,53 @@ class CactpotSolver
 
 	findOptimal()
 	{
+		let scratchIDs = [];
+		let optimal = -Infinity;
+		let optimalIDs = [0, 2, 6, 8, 4];
+		for (let [key, row] of this.rows)
+		{
+			if (row.mean >= optimal)
+			{
+				if (row.mean > optimal) scratchIDs = [];
+				scratchIDs.push(row.x);
+				scratchIDs.push(row.y);
+				scratchIDs.push(row.z);
+			}
+		}
+		let known = this.getKnownScratchIDs();
+		for (let i = 0; i < scratchIDs.length; i++)
+		{
+			if (known.includes(scratchIDs[i]))
+			{
+				scratchIDs.splice(i, 1);
+				i--;
+			}
+		}
+		let hasOptimals = false;
+		for (let v of scratchIDs)
+		{
+			if (optimalIDs.includes(v))
+			{
+				hasOptimals = true;
+				break;
+			}
+		}
+		if (hasOptimals)
+		{
+			for (let i = 0; i < scratchIDs.length; i++)
+			{
+				if (!optimalIDs.includes(scratchIDs[i]))
+				{
+					scratchIDs.splice(i, 1);
+					i--;
+				}
+			}
+	}
+		for (let v of scratchIDs)
+		{
+			let scratch = this.scratches.get(v);
+			scratch.optimal = true;
+		}
 	}
 
 	findBest()
@@ -297,11 +344,11 @@ class CactpotSolver
 		for (let v of rowIDs)
 		{
 			let row = this.rows.get(v);
-		row.best = true;
-		this.scratches.get(row.x).best = true;
-		this.scratches.get(row.y).best = true;
-		this.scratches.get(row.z).best = true;
-	}
+			row.best = true;
+			this.scratches.get(row.x).best = true;
+			this.scratches.get(row.y).best = true;
+			this.scratches.get(row.z).best = true;
+		}
 	}
 
 	updateRows()
