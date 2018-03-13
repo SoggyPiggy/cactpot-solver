@@ -164,6 +164,19 @@ class CactpotSolver
 		}
 	}
 
+	getKnownScratchIDs()
+	{
+		let known = [];
+		for (let [key, item] of this.scratches)
+		{
+			if (item.value != 0)
+			{
+				known.push(key);
+			}
+		}
+		return known;
+	}
+
 	getUsed()
 	{
 		let used = [];
