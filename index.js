@@ -240,27 +240,24 @@ class CactpotSolver
 	{
 		let passed = true;
 		let toomuch = false;
-		let used = this.getUsed();
-		if (used.length > 4) toomuch = true;
-		let scratches = this.scratches.values();
-		for (let x = 0; x < scratches.length; x++)
+		if (this.getUsed().length > 4) toomuch = true;
+		for (let [xKey, xItem] of this.scratches)
 		{
-			let scratchX = this.scratches.get(x);
-			for (let y = 0; y < scratches.length; y++)
+			for (let [yKey, yValue] of this.scratches)
 			{
-				if (x == y) continue;
-				let scratchY = this.scratches.get(y);
-				if (scratchX.value == 0 || scratchY.value == 0) continue;
-				if (scratchX.value == scratchY.value)
+				if (xKey == yKey) continue;
+				if (xItem.value == 0 || yValue.value == 0) continue;
+				if (xItem.value == yValue.value)
 				{
-					scratchX.problem = true;
-					scratchY.problem = true;
+					xItem.problem = true;
+					xItem.problem = true;
 					passed = false;
 				}
 			}
-			if (scratchX.value != 0 && toomuch)
+			if (xItem.value != 0 && toomuch)
 			{
-				scratchX.problem = true;
+				xItem.problem = true;
+				passed = false;
 			}
 		}
 		return passed
