@@ -333,7 +333,7 @@ class CactpotSolver
 			if (row.mean > best)
 			{
 				rowIDs = [];
-				rowIDs.push(v[0]);
+				rowIDs.push(key);
 				best = row.mean;
 			}
 			else if (row.mean == best) rowIDs.push(key);
