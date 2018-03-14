@@ -275,17 +275,26 @@ class CactpotSolver
 
 	findOptimal()
 	{
-		let scratchIDs = [];
+		let rawIDs = [];
 		let optimal = -Infinity;
 		let optimalIDs = [0, 2, 6, 8, 4];
 		for (let [key, row] of this.rows)
 		{
 			if (row.mean >= optimal)
 			{
-				if (row.mean > optimal) scratchIDs = [];
-				scratchIDs.push(row.x);
-				scratchIDs.push(row.y);
-				scratchIDs.push(row.z);
+				if (row.mean > optimal) rawIDs = [];
+				rawIDs.push(row.x);
+				rawIDs.push(row.y);
+				rawIDs.push(row.z);
+				optimal = row.mean;
+			}
+		}
+		let scratchIDs = [];
+		for (let v of rawIDs)
+		{
+			if (!scratchIDs.includes(v))
+			{
+				scratchIDs.push(v);
 			}
 		}
 		let known = this.getKnownScratchIDs();
@@ -316,7 +325,7 @@ class CactpotSolver
 					i--;
 				}
 			}
-	}
+		}
 		for (let v of scratchIDs)
 		{
 			let scratch = this.scratches.get(v);
