@@ -234,7 +234,7 @@ class CactpotSolver
 					if (combinations.includes(combination)) continue;
 					combinations.push(combination);
 					iteration++;
-					let value = this.payouts.get(x + y + z).value;
+					let value = Number(this.payouts.get(x + y + z).value);
 					total += value;
 					if (value < low) low = value;
 					if (value > high) high = value;
