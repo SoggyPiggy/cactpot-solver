@@ -75,25 +75,25 @@ class CactpotSolver
 		this.scratches.set(8, new Scratch());
 
 		this.payouts = new Map();
-		this.payouts.set(6, 10000);
-		this.payouts.set(7, 36);
-		this.payouts.set(8, 720);
-		this.payouts.set(9, 360);
-		this.payouts.set(10, 80);
-		this.payouts.set(11, 252);
-		this.payouts.set(12, 108);
-		this.payouts.set(13, 72);
-		this.payouts.set(14, 54);
-		this.payouts.set(15, 180);
-		this.payouts.set(16, 72);
-		this.payouts.set(17, 180);
-		this.payouts.set(18, 119);
-		this.payouts.set(19, 36);
-		this.payouts.set(20, 306);
-		this.payouts.set(21, 1080);
-		this.payouts.set(22, 144);
-		this.payouts.set(23, 1800);
-		this.payouts.set(24, 3600);
+		this.payouts.set(6, { value: 10000 });
+		this.payouts.set(7, { value: 36 });
+		this.payouts.set(8, { value: 720 });
+		this.payouts.set(9, { value: 360 });
+		this.payouts.set(10, { value: 80 });
+		this.payouts.set(11, { value: 252 });
+		this.payouts.set(12, { value: 108 });
+		this.payouts.set(13, { value: 72 });
+		this.payouts.set(14, { value: 54 });
+		this.payouts.set(15, { value: 180 });
+		this.payouts.set(16, { value: 72 });
+		this.payouts.set(17, { value: 180 });
+		this.payouts.set(18, { value: 119 });
+		this.payouts.set(19, { value: 36 });
+		this.payouts.set(20, { value: 306 });
+		this.payouts.set(21, { value: 1080 });
+		this.payouts.set(22, { value: 144 });
+		this.payouts.set(23, { value: 1800 });
+		this.payouts.set(24, { value: 3600 });
 
 		this.rows = new Map();
 		this.rows.set('012', new Row(0, 1, 2));
@@ -135,25 +135,25 @@ class CactpotSolver
 
 	resetPayouts()
 	{
-		this.payouts.set(6, 10000);
-		this.payouts.set(7, 36);
-		this.payouts.set(8, 720);
-		this.payouts.set(9, 360);
-		this.payouts.set(10, 80);
-		this.payouts.set(11, 252);
-		this.payouts.set(12, 108);
-		this.payouts.set(13, 72);
-		this.payouts.set(14, 54);
-		this.payouts.set(15, 180);
-		this.payouts.set(16, 72);
-		this.payouts.set(17, 180);
-		this.payouts.set(18, 119);
-		this.payouts.set(19, 36);
-		this.payouts.set(20, 306);
-		this.payouts.set(21, 1080);
-		this.payouts.set(22, 144);
-		this.payouts.set(23, 1800);
-		this.payouts.set(24, 3600);
+		this.payouts.set(6, {value: 10000});
+		this.payouts.set(7, {value: 36});
+		this.payouts.set(8, {value: 720});
+		this.payouts.set(9, {value: 360});
+		this.payouts.set(10, {value: 80});
+		this.payouts.set(11, {value: 252});
+		this.payouts.set(12, {value: 108});
+		this.payouts.set(13, {value: 72});
+		this.payouts.set(14, {value: 54});
+		this.payouts.set(15, {value: 180});
+		this.payouts.set(16, {value: 72});
+		this.payouts.set(17, {value: 180});
+		this.payouts.set(18, {value: 119});
+		this.payouts.set(19, {value: 36});
+		this.payouts.set(20, {value: 306});
+		this.payouts.set(21, {value: 1080});
+		this.payouts.set(22, {value: 144});
+		this.payouts.set(23, {value: 1800});
+		this.payouts.set(24, {value: 3600});
 	}
 
 	resetRows()
@@ -234,7 +234,7 @@ class CactpotSolver
 					if (combinations.includes(combination)) continue;
 					combinations.push(combination);
 					iteration++;
-					let value = this.payouts.get(x + y + z);
+					let value = this.payouts.get(x + y + z).value;
 					total += value;
 					if (value < low) low = value;
 					if (value > high) high = value;
