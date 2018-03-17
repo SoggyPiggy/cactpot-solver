@@ -295,7 +295,7 @@ class CactpotSolver
 			this.updateRows();
 			let count = this.getUsed().length;
 			if (count == 0) return;
-			else if (count == 4) this.findBest();
+			else if (count >= 4) this.findBest();
 			else this.findOptimal();
 		}
 	}
