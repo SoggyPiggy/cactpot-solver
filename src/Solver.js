@@ -1,5 +1,6 @@
 const Scratch = require('./Scratch');
 const Row = require('./Row');
+const Payout = require('./Payout');
 
 class CactpotSolver
 {
@@ -17,25 +18,25 @@ class CactpotSolver
 		this.scratches.set(8, new Scratch());
 
 		this.payouts = new Map();
-		this.payouts.set(6, { value: 10000 });
-		this.payouts.set(7, { value: 36 });
-		this.payouts.set(8, { value: 720 });
-		this.payouts.set(9, { value: 360 });
-		this.payouts.set(10, { value: 80 });
-		this.payouts.set(11, { value: 252 });
-		this.payouts.set(12, { value: 108 });
-		this.payouts.set(13, { value: 72 });
-		this.payouts.set(14, { value: 54 });
-		this.payouts.set(15, { value: 180 });
-		this.payouts.set(16, { value: 72 });
-		this.payouts.set(17, { value: 180 });
-		this.payouts.set(18, { value: 119 });
-		this.payouts.set(19, { value: 36 });
-		this.payouts.set(20, { value: 306 });
-		this.payouts.set(21, { value: 1080 });
-		this.payouts.set(22, { value: 144 });
-		this.payouts.set(23, { value: 1800 });
-		this.payouts.set(24, { value: 3600 });
+		this.payouts.set(6, new Payout(10000));
+		this.payouts.set(7, new Payout(36));
+		this.payouts.set(8, new Payout(720));
+		this.payouts.set(9, new Payout(360));
+		this.payouts.set(10, new Payout(80));
+		this.payouts.set(11, new Payout(252));
+		this.payouts.set(12, new Payout(108));
+		this.payouts.set(13, new Payout(72));
+		this.payouts.set(14, new Payout(54));
+		this.payouts.set(15, new Payout(180));
+		this.payouts.set(16, new Payout(72));
+		this.payouts.set(17, new Payout(180));
+		this.payouts.set(18, new Payout(119));
+		this.payouts.set(19, new Payout(36));
+		this.payouts.set(20, new Payout(306));
+		this.payouts.set(21, new Payout(1080));
+		this.payouts.set(22, new Payout(144));
+		this.payouts.set(23, new Payout(1800));
+		this.payouts.set(24, new Payout(3600));
 
 		this.rows = new Map();
 		this.rows.set('012', new Row(0, 1, 2));
