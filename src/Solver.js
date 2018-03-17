@@ -163,7 +163,7 @@ class CactpotSolver
 		let total = 0;
 		let low = Infinity;
 		let high = -Infinity;
-		let possibilites = [];
+		let possibilities = [];
 		let combinations = [];
 		for (let x of arrayX)
 		{
@@ -180,12 +180,12 @@ class CactpotSolver
 					total += value;
 					if (value < low) low = value;
 					if (value > high) high = value;
-					possibilites.push(value);
+					possibilities.push(value);
 				}
 			}
 		}
-		possibilites = possibilites.sort(function (a, b) { return a - b; });
-		return { mean: total / iteration, low, high, possibilites };
+		possibilities = possibilities.sort(function (a, b) { return a - b; });
+		return { mean: total / iteration, low, high, possibilities };
 	}
 
 	validateScratches()

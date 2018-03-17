@@ -8,7 +8,7 @@ module.exports = class Row
 		this.mean = 0;
 		this.low = 0;
 		this.high = 0;
-		this.possibilites = [];
+		this.possibilities = [];
 		this.best = false;
 	}
 
@@ -17,7 +17,7 @@ module.exports = class Row
 		this.mean = 0;
 		this.low = 0;
 		this.high = 0;
-		this.possibilites = [];
+		this.possibilities = [];
 		this.resetStates();
 	}
 
@@ -31,6 +31,6 @@ module.exports = class Row
 		this.mean = stats.mean;
 		this.high = stats.high;
 		this.low = stats.low;
-		this.possibilites = stats.possibilites;
+		this.possibilities = stats.possibilities;
 	}
 }
