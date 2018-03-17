@@ -177,8 +177,6 @@ class CactpotSolver
 	validateScratches()
 	{
 		let passed = true;
-		let toomuch = false;
-		if (this.getUsed().length > 4) toomuch = true;
 		for (let [xKey, xItem] of this.scratches)
 		{
 			for (let [yKey, yValue] of this.scratches)
@@ -191,11 +189,6 @@ class CactpotSolver
 					xItem.problem = true;
 					passed = false;
 				}
-			}
-			if (xItem.value != 0 && toomuch)
-			{
-				xItem.problem = true;
-				passed = false;
 			}
 		}
 		return passed
